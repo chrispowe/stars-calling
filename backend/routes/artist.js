@@ -33,7 +33,7 @@ router.post('/addartist', (req, res) => {
 
 // GET SPECIFIC ARTIST
 router.get('/:id', (req, res) => {
-    dbConnection.query('SELECT * FROM MusicArtist WHERE artistName=?', [req.params.id], (err, result) => {
+    dbConnection.query('SELECT * FROM MusicArtist WHERE artistID=?', [req.params.id], (err, result) => {
         if (err) console.log(err);
 
         res.json(result);
@@ -50,5 +50,13 @@ router.put('/update/:id', (req, res) => {
         console.log('update successful !');
     })
 });
+
+router.post('/search', (req, res) => {
+    dbConnection.query(`SELECT * FROM MusicArtist WHERE ArtistName LIKE ?`, ['%' + req.body.artistName + '%'], (err, results) => {
+        if (err) console.log(err);
+
+        res.json(results);
+    })
+})
 
 module.exports = router;

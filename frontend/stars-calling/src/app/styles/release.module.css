@@ -1,0 +1,56 @@
+
+.releasePage{
+    display: flex;
+    flex-direction: column;
+}
+
+.releaseMainBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10vh;
+}
+
+.releaseInfoBox{
+    border: solid white;
+    width: 39vh;
+}
+
+.reviewsBox{
+    border: solid white;
+    width: 50vh
+}
+
+.reviewBox {
+    border-top: solid white;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5vh
+}
+
+.addReleasePage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.addReleaseMainBox {
+    border: solid 2px;
+    height: auto;
+    width: 50vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3vh
+}
+
+.addReleaseForm {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: auto
+}

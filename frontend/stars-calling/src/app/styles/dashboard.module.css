@@ -1,0 +1,41 @@
+
+.dashboard {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2vh;
+    margin-left: 3vh;
+    margin-right: 3vh
+}
+
+.navBox {
+    border: solid white;
+    width: 35vh;
+    height: 20vh;
+    padding: 2vh;
+    margin-top: 10vh;
+}
+
+.mainBox {
+    width: 75vh;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8vh;
+    margin-top: 10vh;
+}
+
+.reviewBox {
+    border: solid white;
+    width: 75vh;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5vh
+}
+
+.listBox {
+    border: solid white;
+    width: 35vh;
+    height: 40vh;
+    padding: 2vh;
+    margin-top: 10vh;
+}

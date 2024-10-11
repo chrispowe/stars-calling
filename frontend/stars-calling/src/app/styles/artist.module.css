@@ -1,0 +1,65 @@
+
+
+.artistPage{
+    display: flex;
+    flex-direction: column;
+}
+
+.artistMainBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10vh
+}
+
+.releaseBox{
+    width: 50vh;
+    border: solid white 1px
+}
+
+.artistReleaseBox{
+    display: flex;
+    flex-direction: row;
+}
+
+.albumBox{
+    width: 25vh
+}
+
+.epBox{
+    width: 25vh
+}
+
+.addMain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+
+.addArtistPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.addArtistMainBox {
+    border: solid 2px;
+    height: auto;
+    width: 50vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3vh
+}
+
+.addArtistForm {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: auto
+}

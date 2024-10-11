@@ -9,41 +9,56 @@ const router = express.Router();
 
 const randomID = uuidv4();
 
-// dbConnection.query('SELECT * FROM User', (err, result) => {
-//     console.log(result)
-// })
-
 // CHECK IF USER IS LOGGED IN
 router.get('/currentUser', (req, res) => {
-    if (!req.session.user) {
-        console.log(false);
-        res.json(false);
-    }
 
-    if (req.session.user) {
-        console.log(req.session.user.userID);
-        res.json(true);
+    try {
+        if (req.session.user) {
+            console.log(req.session.user);
+            res.send(req.session.user);
+        } else {
+            res.json('no one is currently logged in')
+        }
+    } catch(err) {
+        console.log(err);
     }
 })
 
 // USER LOGIN
 router.post('/login', (req, res) => {
 
-   dbConnection.query('SELECT * FROM User WHERE username=?', [req.body.username], (err, result) => {
-        if (err) console.log(err);
+    function login() {
 
-        if (result) {
-            if (result[0].userPassword == req.body.userPassword) {
-                res.json(result[0]);
-
-                req.session.user = result[0];
-                req.session.save();
-            }
-            if (result[0].userPassword != req.body.userPassword) {
-                res.status(401).send('username or password incorrect');
-            }
+        try {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    dbConnection.query('SELECT * FROM User WHERE username=?', [req.body.username], (err, result) => {
+                        if (err) reject(err);
+        
+                        if (!result) {
+                            reject('Wrong username or password')
+                            res.redirect(401, 'back');
+                        } else {
+                            if (req.body.userPassword != result[0].userPassword) {
+                                reject('Wrong username or password');
+                                logged = false;
+                                res.redirect(401, 'back');
+                            } else {
+                                resolve('Success');
+                                req.session.user = result[0];
+                                req.session.save();
+                                res.redirect('http://localhost:3000');
+                            }
+                        }
+                    })
+                }, 2000)
+                })
+        } catch (err) {
+            console.log(err);
         }
-    })
+    }
+
+    login();
 });
 
 // USER LOG OUT
